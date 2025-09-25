@@ -21,6 +21,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
      <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 </head>
 
@@ -80,6 +81,23 @@
                         <h6 class="collapse-header">Category Crud:</h6>
                         <a class="collapse-item" href="add_category.php">Add Category</a>
                         <a class="collapse-item" href="show_category.php">Show Categories</a>
+                      
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Cars</span>
+                </a>
+                <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Cars Crud:</h6>
+                        <a class="collapse-item" href="add_car.php">Add Car</a>
+                        <a class="collapse-item" href="show_car.php">Show Cars</a>
                       
                     </div>
                 </div>
@@ -280,7 +298,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello, <?php echo $_SESSION["username"]?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello, <?php echo isset($_SESSION["username"]) ? $_SESSION["username"] : "Guest"?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>

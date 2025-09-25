@@ -1,46 +1,60 @@
 <?php include "includes/header.php";
 
 include "../db.php";
-$query = "SELECT * FROM categories;";
-$categories = mysqli_query($con, $query);
+$query = "SELECT * FROM cars INNER JOIN categories ON cars.car_category = categories.category_id;";
+$carData = mysqli_query($con, $query);
 ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">All Categories</h1>
+    <h1 class="h3 mb-2 text-gray-800">All Cars</h1>
 
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">All users below</h6>
+            <h6 class="m-0 font-weight-bold text-primary">All cars below</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Category Id</th>
-                            <th>Category Name</th>
+                            <th>Car Id</th>
+                            <th>Car Name</th>
+                            <th>Car Category</th>
+                            <th>Car Image</th>
+                            <th>Car Rent</th>
+                            <th>Car Description</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
-                        <tr>
-                            <th>Category Id</th>
-                            <th>Category Name</th>
+                         <tr>
+                            <th>Car Id</th>
+                            <th>Car Name</th>
+                            <th>Car Category</th>
+                            <th>Car Image</th>
+                            <th>Car Rent</th>
+                            <th>Car Description</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php foreach ($categories as $category) { ?>
+                        <?php foreach ($carData as $car) { ?>
                             <tr>
-                                <td><?php echo $category["category_id"] ?></td>
-                                <td><?php echo $category["category_name"] ?></td>
+                                <td><?php echo $car["car_id"] ?></td>
+                                <td><?php echo $car["car_name"] ?></td>
+                                <td><?php echo $car["category_name"] ?></td>
                                 <td>
-                                    <a href="update_category.php?index=<?php echo $category["category_id"] ?>" class="btn btn-warning btn-sm">Edit</a>
+                                    <img width="200" src="carimages/<?php echo $car["car_image"]?>" alt="">
+                                </td>
+                                <td>$<?php echo $car["car_rent"] ?></td>
+                                <td><?php echo $car["car_description"] ?></td>
+                                <td>
+                                    <a href="update_category.php?index=<?php echo $car["category_id"] ?>" class="btn btn-warning btn-sm">Edit</a>
                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-<?php echo $category["category_id"]?>">
                                         Delete
                                     </button>
